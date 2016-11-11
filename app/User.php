@@ -23,7 +23,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
+    
+    // using the address model, this is usings the address table as part of the user table
     public function address(){
         return $this->hasOne('App\Address');
     }

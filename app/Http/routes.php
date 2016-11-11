@@ -1,4 +1,6 @@
 <?php
+use App\User;
+use App\address;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,4 +15,18 @@
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+// creates a address inside the address table with the same id as the user from the user table
+Route::get('/insert', function () {
+
+    // looking for user id 1
+    $user = User::findOrFail(1);
+
+    //saving the address as a var
+    $address = new Address(['address_name'=> '123 southampton road']);
+
+    //putting the address function and saving the address that was created
+    $user->address()->save($address);
+
 });
